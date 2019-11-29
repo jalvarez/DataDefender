@@ -105,7 +105,7 @@ public class DataGenerator implements IGenerator {
 
                     final StringBuilder sql = new StringBuilder(100);
 
-                    sql.append("SELECT DISTINCT(").append(column.getName()).append(") FROM ").append(table.getName());
+                    sql.append("SELECT DISTINCT(").append(column.getName()).append(") FROM ").append(table.getName()).append(" WHERE ").append(column.getName()).append(" IS NOT NULL");
 
                     try (Statement stmt = dbFactory.getConnection().createStatement();
                         ResultSet rs = stmt.executeQuery(sql.toString());
