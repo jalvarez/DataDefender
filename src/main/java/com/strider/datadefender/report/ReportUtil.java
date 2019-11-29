@@ -65,7 +65,9 @@ public class ReportUtil {
 
     public static List<String> sampleData(final IDBFactory factory, final String tableName, final String columnName) {
         final ISQLBuilder sqlBuilder  = factory.createSQLBuilder();
-        final String      querySample = sqlBuilder.buildSelectWithLimit("SELECT " + columnName + " FROM " + tableName
+        final String      table      = sqlBuilder.prefixSchema(tableName);
+
+        final String      querySample = sqlBuilder.buildSelectWithLimit("SELECT " + columnName + " FROM " + table
                                                                         + " WHERE " + columnName + " IS NOT NULL",
                                                                         5);
 
